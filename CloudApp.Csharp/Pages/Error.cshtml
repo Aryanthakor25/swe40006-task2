@@ -1,0 +1,15 @@
+@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1>Something went wrong</h1>
+<p>The error has been recorded in Application Insights and in the App Service log stream.</p>
+
+@if (Model.ShowRequestId)
+{
+    <div class="card">
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </div>
+}

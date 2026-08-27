@@ -1,0 +1,9 @@
+bin/
+obj/
+.vs/
+*.user
+*.suo
+publish/
+appsettings.Production.json
+PublishProfiles/*.pubxml.user
+.DS_Store

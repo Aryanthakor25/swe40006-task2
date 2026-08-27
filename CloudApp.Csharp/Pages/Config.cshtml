@@ -1,0 +1,68 @@
+@page
+@model ConfigModel
+@{
+    ViewData["Title"] = "Configuration";
+}
+
+<h1>Configuration source proof</h1>
+<p>
+    None of the values below exist in the source code. They are read through
+    <code>IConfiguration</code>, which on Azure App Service is populated from
+    <strong>Settings &rarr; Environment variables &rarr; App settings</strong>.
+</p>
+
+<div class="card">
+    <table>
+        <tr>
+            <th>AppConfig__WelcomeMessage</th>
+            <td>@Model.Settings.WelcomeMessage</td>
+        </tr>
+        <tr>
+            <th>AppConfig__Environment</th>
+            <td>@Model.Settings.Environment</td>
+        </tr>
+        <tr>
+            <th>AppConfig__OwnerName</th>
+            <td>@Model.Settings.OwnerName</td>
+        </tr>
+        <tr>
+            <th>AppConfig__ApiKey (masked)</th>
+            <td>@Model.Settings.MaskedApiKey</td>
+        </tr>
+        <tr>
+            <th>ConnectionStrings__DefaultConnection</th>
+            <td>
+                @if (Model.HasConnectionString)
+                {
+                    <span class="pill pill-ok">Present (@Model.ConnectionStringLength characters, value hidden)</span>
+                }
+                else
+                {
+                    <span class="pill pill-warn">Not configured</span>
+                }
+            </td>
+        </tr>
+        <tr>
+            <th>Application Insights connection</th>
+            <td>
+                @if (Model.HasAppInsights)
+                {
+                    <span class="pill pill-ok">Connected</span>
+                }
+                else
+                {
+                    <span class="pill pill-warn">Not configured</span>
+                }
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="card">
+    <h2 style="margin-top:0">How to change these</h2>
+    <p>
+        Azure Portal &rarr; your Web App &rarr; <strong>Settings &rarr; Environment variables</strong> &rarr;
+        add an app setting named exactly <code>AppConfig__WelcomeMessage</code> (two underscores map to the
+        JSON nesting) &rarr; <strong>Apply</strong>. The app restarts and this page shows the new value.
+    </p>
+</div>

@@ -1,0 +1,29 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>@Model.Settings.WelcomeMessage</h1>
+<p>SWE40006 Software Deployment and Evolution &mdash; Task 2 custom ASP.NET Core application, deployed to Azure App Service from Visual Studio.</p>
+
+<div class="card">
+    <h2 style="margin-top:0">Runtime information</h2>
+    <table>
+        <tr><th>Owner</th><td>@Model.Settings.OwnerName</td></tr>
+        <tr><th>Configured environment</th><td>@Model.Settings.Environment</td></tr>
+        <tr><th>ASP.NET Core environment</th><td>@Model.HostEnvironmentName</td></tr>
+        <tr><th>.NET runtime</th><td>@Model.FrameworkDescription</td></tr>
+        <tr><th>Server / instance</th><td><code>@Model.MachineName</code></td></tr>
+        <tr><th>Server UTC time</th><td>@Model.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")</td></tr>
+    </table>
+</div>
+
+<div class="card">
+    <h2 style="margin-top:0">Evidence links</h2>
+    <p>
+        <a asp-page="/Config">Configuration page</a> &mdash; proves values are read from Azure App Settings.<br />
+        <a href="/health">/health</a> &mdash; JSON health endpoint used by Azure App Service Health check.<br />
+        <a href="/boom">/boom</a> &mdash; deliberately throws an exception so Application Insights &rarr; Failures has data.
+    </p>
+</div>
