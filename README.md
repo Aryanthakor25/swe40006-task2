@@ -1,4 +1,4 @@
-# SWE40006 — Deployment Task 2: Web App Deployment to Azure
+# SWE40006 Deployment Task 2: Web App Deployment to Azure
 
 Source code for Task 2 (Pass → High Distinction). Two applications are deployed to
 Azure App Service from Visual Studio 2026:
@@ -12,10 +12,10 @@ Both applications send telemetry to a single Azure Application Insights resource
 
 ## What each part demonstrates
 
-**Task 2.2 — custom C# app.** `CloudApp.Csharp` is a .NET 8 Razor Pages app with a home
+**Task 2.2 custom C# app.** `CloudApp.Csharp` is a .NET 8 Razor Pages app with a home
 page, a configuration page and an error page.
 
-**Task 2.3 — configuration and diagnostics.**
+**Task 2.3 configuration and diagnostics.**
 - No secrets or environment values in source. Everything is read through `IConfiguration`,
   populated in Azure from *Settings → Environment variables → App settings*:
   `AppConfig__WelcomeMessage`, `AppConfig__Environment`, `AppConfig__OwnerName`,
@@ -25,7 +25,7 @@ page, a configuration page and an error page.
 - Console logging plus a request-logging middleware, so every hit appears live in the
   App Service **Log stream**.
 
-**Task 2.4 — polyglot + Application Insights.**
+**Task 2.4 polyglot + Application Insights.**
 - `CloudApp.Php` reads its settings with `getenv()` from the same kind of App Settings
   (`APP_WELCOME_MESSAGE`, `APP_ENVIRONMENT`, `APP_OWNER_NAME`, `APP_API_KEY`).
 - `CloudApp.Php/health.php` returns 200/503 JSON.
