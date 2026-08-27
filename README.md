@@ -1,6 +1,6 @@
 # SWE40006 Deployment Task 2: Web App Deployment to Azure
 
-Source code for Task 2 (Pass → High Distinction). Two applications are deployed to
+Source code for Task 2 (Pass -> High Distinction). Two applications are deployed to
 Azure App Service from Visual Studio 2026:
 
 | Folder | Stack | Azure host |
@@ -17,7 +17,7 @@ page, a configuration page and an error page.
 
 **Task 2.3 configuration and diagnostics.**
 - No secrets or environment values in source. Everything is read through `IConfiguration`,
-  populated in Azure from *Settings → Environment variables → App settings*:
+  populated in Azure from *Settings -> Environment variables -> App settings*:
   `AppConfig__WelcomeMessage`, `AppConfig__Environment`, `AppConfig__OwnerName`,
   `AppConfig__ApiKey`, `ConnectionStrings__DefaultConnection`.
 - `/health` returns JSON from a real `IHealthCheck` (`ConfigurationHealthCheck.cs`) that
@@ -33,7 +33,7 @@ page, a configuration page and an error page.
   straight to the Application Insights ingestion REST API, and injects the browser
   JavaScript SDK for client-side page views. The connection string comes from the
   `APPLICATIONINSIGHTS_CONNECTION_STRING` app setting.
-- `/boom` on the C# app throws on purpose so Application Insights → *Failures* has data.
+- `/boom` on the C# app throws on purpose so Application Insights -> *Failures* has data.
 
 ## Running locally
 
